@@ -1,0 +1,52 @@
+# Jupiter SCADA - Example Configuration
+#
+# This file defines the OPC UA tags to be monitored by the application.
+# Rename this file to 'config.yaml' and customize it for your specific setup.
+#
+# The application will read this file on startup to know which data points
+# to subscribe to from the OPC UA server.
+
+# Global default polling interval in milliseconds.
+# This value will be used for any tag that does not have a specific
+# 'polling_interval_ms' defined.
+default_polling_interval_ms: 1000
+
+# List of OPC UA tags to monitor.
+# Each tag is an object with the following properties:
+#   - name: A unique, user-friendly identifier for the tag. Used in the API and UI.
+#           Should not contain spaces or special characters.
+#   - node_id: The full OPC UA Node ID string. (e.g., "ns=2;i=123", "ns=3;s=MyTag")
+#   - polling_interval_ms: (Optional) The specific polling interval for this tag
+#                          in milliseconds. If omitted, the 'default_polling_interval_ms'
+#                          will be used.
+#   - description: (Optional) A brief description of what this tag represents.
+
+tags:
+  - name: "System_Heartbeat"
+    node_id: "ns=2;i=1"
+    polling_interval_ms: 5000
+    description: "A simple counter to check if the OPC UA server is responsive."
+
+  - name: "Tank_1_Level"
+    node_id: "ns=2;i=2"
+    polling_interval_ms: 500
+    description: "Current level of Tank 1 in meters."
+
+  - name: "Pump_1_Status"
+    node_id: "ns=2;i=3"
+    # This tag will use the default_polling_interval_ms (1000ms)
+    description: "Status of Pump 1 (0=OFF, 1=ON)."
+
+  - name: "Temperature_Sensor_A"
+    node_id: "ns=3;s=TemperatureA"
+    polling_interval_ms: 2000
+    description: "Temperature reading from Sensor A in Celsius."
+
+  - name: "Valve_2_Position"
+    node_id: "ns=2;i=10"
+    description: "Position of Valve 2 as a percentage (0=Closed, 100=Open)."
+
+  - name: "Motor_1_Speed_RPM"
+    node_id: "ns=4;i=101"
+    polling_interval_ms: 250
+    description: "Current speed of Motor 1 in Revolutions Per Minute."
