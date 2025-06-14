@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter SCADA Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>Jupiter SCADA</h1>
+            <div id="connection-status" class="status-disconnected">Connecting...</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="tags-container">
+            <table id="tags-table">
+                <thead>
+                    <tr>
+                        <th>Tag Name</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody id="tags-tbody">
+                    <!-- Tag data rows will be dynamically inserted here by app.js -->
+                    <tr>
+                        <td colspan="4" class="loading-message">Loading tag data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="error-container" class="error-message" style="display: none;"></div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>Jupiter SCADA - Simple open source SCADA software for OPC UA communication.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>
